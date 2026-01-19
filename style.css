@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+}
+
+.search-container {
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+#searchQuery {
+  width: 70%;
+  padding: 12px;
+  font-size: 18px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#results {
+  margin-top: 30px;
+  text-align: left;
+  padding: 0 20px;
+}
