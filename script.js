@@ -1,37 +1,34 @@
-async function searchByFIO() {
-  const last = document.getElementById("last").value.toLowerCase();
-  const first = document.getElementById("first").value.toLowerCase();
-  const middle = document.getElementById("middle").value.toLowerCase();
+async function search() {
+  const last = document.getElementById("lastname").value.trim().toLowerCase();
+  const first = document.getElementById("firstname").value.trim().toLowerCase();
+  const middle = document.getElementById("middlename").value.trim().toLowerCase();
 
-  const res = await fetch("data.json");
-  const data = await res.json();
+  const out = document.getElementById("results");
+  out.innerHTML = "<p>Поиск...</p>";
 
-  const results = data.filter(p =>
-    (!last || p.lastName.toLowerCase().includes(last)) &&
-    (!first || p.firstName.toLowerCase().includes(first)) &&
-    (!middle || p.middleName.toLowerCase().includes(middle))
+  const res = await fetch("database.json");
+  const db = await res.json();
+
+  const found = db.filter(p =>
+    (!last || p.lastname.toLowerCase().includes(last)) &&
+    (!first || p.firstname.toLowerCase().includes(first)) &&
+    (!middle || p.middlename.toLowerCase().includes(middle))
   );
 
-  render(results);
-}
-
-function render(results) {
-  const out = document.getElementById("result");
   out.innerHTML = "";
 
-  if (results.length === 0) {
+  if (found.length === 0) {
     out.innerHTML = "<p>Ничего не найдено</p>";
     return;
   }
 
-  results.forEach(p => {
+  found.forEach(p => {
     out.innerHTML += `
-      <div>
-        <b>${p.lastName} ${p.firstName} ${p.middleName}</b><br>
-        ДР: ${p.birth}<br>
-        Город: ${p.city}<br>
-        Заметки: ${p.notes}
-        <hr>
+      <div class="card">
+        <b>${p.lastname} ${p.firstname} ${p.middlename}</b><br>
+        📅 Дата рождения: <span>${p.birth}</span><br>
+        🏙 Город: <span>${p.city}</span><br>
+        📝 Заметка: <span>${p.info}</span>
       </div>
     `;
   });
