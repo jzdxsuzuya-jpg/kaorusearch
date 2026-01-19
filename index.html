@@ -2,26 +2,63 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <title>Kaoru Search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мой Поисковик</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Мой Поисковик</h1>
-    <p>Введите идентификатор / e‑mail / ник для поиска</p>
+<div class="app">
+  <header class="top">
+    <div class="logo">KAORU<span>SEARCH</span></div>
+    <div class="subtitle">Intelligence report</div>
   </header>
 
-  <main>
-    <div class="search-container">
-      <input type="text" id="searchQuery" placeholder="Поиск...">
-      <button onclick="performSearch()">Искать</button>
+  <section class="search">
+    <input type="text" id="query" placeholder="Email / Username / ID / Phone">
+    <button onclick="search()">SEARCH</button>
+  </section>
+
+  <section id="report" class="report hidden">
+    <h2>Report</h2>
+
+    <div class="card">
+      <h3>🔍 Query</h3>
+      <p id="qtext"></p>
     </div>
 
-    <div id="results"></div>
-  </main>
+    <div class="grid">
+      <div class="card">
+        <h3>📧 Emails</h3>
+        <ul>
+          <li>Not found</li>
+        </ul>
+      </div>
 
-  <script src="script.js"></script>
+      <div class="card">
+        <h3>👤 Usernames</h3>
+        <ul>
+          <li>Not found</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Social networks</h3>
+        <ul>
+          <li>Not found</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🗂 Databases</h3>
+        <ul>
+          <li>No matches</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
