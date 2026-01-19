@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background: #0b0d10;
+  background: radial-gradient(circle at top, #0e1117, #07090d);
   color: #e6e6e6;
   font-family: Inter, Arial, sans-serif;
 }
@@ -15,10 +15,6 @@ body {
   padding: 30px;
 }
 
-.top {
-  margin-bottom: 40px;
-}
-
 .logo {
   font-size: 32px;
   font-weight: 800;
@@ -27,6 +23,7 @@ body {
 
 .logo span {
   color: #6cf;
+  text-shadow: 0 0 10px #6cf;
 }
 
 .subtitle {
@@ -38,7 +35,7 @@ body {
 .search {
   display: flex;
   gap: 10px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 
 .search input {
@@ -57,14 +54,44 @@ body {
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.search button:hover {
-  opacity: 0.9;
+.search button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  animation: shine 2s infinite;
 }
 
-.report h2 {
-  margin-bottom: 20px;
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.report {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
@@ -72,6 +99,24 @@ body {
   border: 1px solid #1e2330;
   padding: 20px;
   margin-bottom: 20px;
+  opacity: 0;
+  animation: cardIn 0.5s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card h3 {
@@ -86,17 +131,30 @@ body {
   gap: 20px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  padding: 6px 0;
-  color: #aaa;
-}
-
 .hidden {
   display: none;
+}
+
+/* Loading scanner */
+.scanner {
+  margin: 20px 0;
+  height: 4px;
+  background: #1e2330;
+  overflow: hidden;
+  position: relative;
+}
+
+.scanner::before {
+  content: "";
+  position: absolute;
+  left: -30%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #6cf, transparent);
+  animation: scan 1.2s infinite;
+}
+
+@keyframes scan {
+  from { left: -30%; }
+  to { left: 100%; }
 }
