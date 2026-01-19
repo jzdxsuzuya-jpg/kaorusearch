@@ -1,64 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Kaoru Search</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<input id="last" placeholder="Фамилия">
+<input id="first" placeholder="Имя">
+<input id="middle" placeholder="Отчество">
+<button onclick="searchByFIO()">Поиск</button>
 
-<div class="app">
-  <header class="top">
-    <div class="logo">KAORU<span>SEARCH</span></div>
-    <div class="subtitle">Intelligence report</div>
-  </header>
-
-  <section class="search">
-    <input type="text" id="query" placeholder="Email / Username / ID / Phone">
-    <button onclick="search()">SEARCH</button>
-  </section>
-
-  <section id="report" class="report hidden">
-    <h2>Report</h2>
-
-    <div class="card">
-      <h3>🔍 Query</h3>
-      <p id="qtext"></p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>📧 Emails</h3>
-        <ul>
-          <li>Not found</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>👤 Usernames</h3>
-        <ul>
-          <li>Not found</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🌐 Social networks</h3>
-        <ul>
-          <li>Not found</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🗂 Databases</h3>
-        <ul>
-          <li>No matches</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</div>
+<div id="result"></div>
 
 <script src="script.js"></script>
-</body>
-</html>
